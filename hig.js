@@ -8,6 +8,7 @@ let filler = hig.filler;
 let action = hig.actions;
 let closing = hig.closing;
 let start = hig.starts;
+let question = hig.questions;
 
 var i = 0;
 var count = Math.random() * 10; //get random num from 1 - 10
@@ -17,8 +18,10 @@ var rand = Math.floor(Math.random() * Math.floor(player.length));
 var p = player[rand]
 
 //Intro
-console.log("(Announcer): Thanks John, I'm here with " + p.name + " getting the lowdown on that first period.");
-console.log("(Announcer): So " + p.nickname + " how are you feeling coming into the second?");
+rand = Math.floor(Math.random() * Math.floor(question.length));
+var q = question[rand];
+console.log("(Announcer): Thanks John, I'm here with " + p.name);
+console.log("(Announcer): So " + p.nickname + " " + q +"?");
 
 //Start
 var rand = Math.floor(Math.random() * Math.floor(start.length));

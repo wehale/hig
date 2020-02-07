@@ -1,4 +1,12 @@
 { 
+	"questions":
+	[
+		"you took a couple shots in the first period how are you feeling about the second",
+		"looks like things have been going pretty well since the break, how are you feeling about your chances",
+		"you had a strong first period how are you feeling going into the second",
+		"I'm sure you'd like to turn things around in the third period, what is your strategy",
+		"you mentioned earlier that the coaches have been working with you on your game how are you feeling"
+	],
 	"players":
 	[
 		{
