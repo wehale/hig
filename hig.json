@@ -7,33 +7,62 @@
 		"I'm sure you'd like to turn things around in the third period, what is your strategy",
 		"you mentioned earlier that the coaches have been working with you on your game how are you feeling"
 	],
-	"players":
+	"teams":
 	[
 		{
-			"name": "Brad Marchand",
-			"nickname": "Marchie"
+			"name": "Bruins",
+			"players":
+			[
+				{
+					"name": "Brad Marchand",
+					"nickname": "Marchie"
+				},
+				{
+					"name": "David Pastrnak",
+					"nickname": "Pasta"
+				},
+				{
+					"name": "Patrice Bergeron",
+					"nickname": "Patrice"
+				},
+				{
+					"name": "Charlie Coyle",
+					"nickname": "Charlie"
+				},
+				{
+					"name": "Anders Bjork",
+					"nickname": "Anders"
+				},
+				{
+					"name": "Zdeno Chara",
+					"nickname": "Chara"
+				}
+			]
 		},
 		{
-			"name": "David Pastrnak",
-			"nickname": "Pasta"
+			"name": "On The Bench Crew",
+			"players":
+			[
+				{
+					"name": "Olly Postanin",
+					"nickname": "Olly"
+				},		
+				{
+					"name": "Jacob Ardown",
+					"nickname": "Jacob"
+				}
+			]
 		},
 		{
-			"name": "Patrice Bergeron",
-			"nickname": "Patrice"
-		},
-		{
-			"name": "Charlie Coyle",
-			"nickname": "Charlie"
-		},
-		{
-			"name": "Anders Bjork",
-			"nickname": "Anders"
-		},
-		{
-			"name": "Zdeno Chara",
-			"nickname": "Chara"
+			"name": "Oilers",
+			"players":
+			[
+				{
+					"name": "Conner McDavid",
+					"nickname": "Conner"
+				}
+			]
 		}
-
 	],
 	"statements": 
 	[
