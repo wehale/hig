@@ -1,6 +1,9 @@
 var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs');
+const Say = require('say').Say;
+const say = new Say('darwin' || 'win32' || 'linux');
+const ANNOUNCER = "Announcer";
 
 var myArgs = process.argv.slice(2);
 
@@ -8,6 +11,9 @@ switch (myArgs[0]) {
 	case "server":
 		runServer();
 		break;
+	case "speak":
+	    runSpeech();
+	    break;
 	default:
 		runCmdLine();
 		break;
@@ -16,6 +22,11 @@ switch (myArgs[0]) {
 var log = function(entry) {
     fs.appendFileSync('/tmp/sample-app.log', new Date().toISOString() + ' - ' + entry + '\n');
 };
+
+function Phrase(n, p) {
+	this.name = n;
+	this.phrase = p;
+}
 
 function runServer() {
 	var server = http.createServer(function (req, res) {
@@ -38,8 +49,12 @@ function runServer() {
 	        });
 	    } else {
 	        res.writeHead(200);
-	        var html = "";
-	        html = genInterview(html);
+	        var out = [];
+	        genInterview(out);
+        	var html = "";
+        	out.forEach(function (p) {
+				html = html.concat(p.name + ": " + p.phrase + "\n");
+			});
 	        res.write(html);
 	        res.end();
 	    }
@@ -53,9 +68,36 @@ function runServer() {
 }
 
 function runCmdLine() {
-	var out = "";
-	out = genInterview(out);
-	console.log(out);
+	var out = [];
+	genInterview(out);
+	out.forEach(function (p) {
+		console.log(p.name + ": " + p.phrase);
+	});
+}
+
+function runSpeech() {
+	const running = true;
+	var out = [];
+	genInterview(out);
+	while (speak(out)) {}
+}
+
+function speak(phrases) {
+	if (phrases.length == 0) {
+		return false;  	
+	}
+	var p = phrases.shift();
+	var v = 'Alex';
+	if (p.name == ANNOUNCER) {
+		v = 'Samantha';
+	} 
+	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
+	say.speak(ph, v, 1, (err) => {
+  		if (err) {
+    		return console.error(err);
+  		}
+  		speak(phrases);
+	});		
 }
 
 function genInterview(h) {
@@ -82,11 +124,13 @@ function genInterview(h) {
 	//Question
 	rand = Math.floor(Math.random() * Math.floor(question.length));
 	var q = question[rand];
-	h = h.concat("(Announcer): Thanks John, I'm here with " + p.name + " of the " + t.name + "\n");
-    h = h.concat("(Announcer): So " + p.nickname + " " + q +"?" + "\n");
-
+	var s = "Thanks John, I'm here with " + p.name + " of the " + t.name;
+	h.push(new Phrase(ANNOUNCER, s));
+	s = "So " + p.nickname + " " + q;
+	h.push(new Phrase(ANNOUNCER, s))
+	
 	//Start
-	h = addLine(h, p, start, ",");
+	addLine(h, p, start);
 
 	//Interview of random length
 	var i = 0;
@@ -94,29 +138,27 @@ function genInterview(h) {
 	while (i < count) { 
 		//Possible Filler
 		if ((i > 0) && (Math.random() < 0.5)) {
-			h = addLine(h, p, filler, ",");
+			addLine(h, p, filler);
 		}
 		//Possible Action
 		if (Math.random() < 0.5) {
-			h = addLine(h, p, action, " ");
+			addLine(h, p, action);
 		}
 		//Statement
-		h = addLine(h, p, statement, ".");
+		addLine(h, p, statement);
 		i++;
 	}
 
 	//Announcer closing
-	h = h.concat("(Announcer): Ok, that's great to hear, thanks " + p.nickname + "." + "\n");
+	s = "Ok, that's great to hear, thanks " + p.nickname;
+	h.push(new Phrase(ANNOUNCER, s));
 
 	//Player closing
-	h = addLine(h, p, closing, ".");
-
-	return h;
+	addLine(h, p, closing);
 }
 
-function addLine(h, p, a, punct) {
+function addLine(h, p, a) {
 	var rand = Math.floor(Math.random() * Math.floor(a.length));
     var s = a.splice(rand, 1); //remove the sentence into var s
-	h = h.concat(p.nickname + ": " + s + punct + "\n"); //print out the sentence
-	return h;
+	h.push(new Phrase(p.nickname, s))
 }

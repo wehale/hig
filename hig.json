@@ -134,21 +134,21 @@
 	],
 	"filler":
 	[
-		"You know, um",
-		"So",
-		"Well, you know",
-		"So, you know",
-		"Yeah",
-		"uh",
-		"You know and",
-		"Ehem",
-		"Like I said",
-		"Oh for sure",
-		"So, ah",
-		"I, ah, ah",
-		"So, um",
-		"Yeah, ah",
-		"Um, ah"
+		"You know, um,",
+		"So,",
+		"Well, you know,",
+		"So, you know,",
+		"Yeah,",
+		"uh,",
+		"You know and,",
+		"Ehem,",
+		"Like I said,",
+		"Oh for sure,",
+		"So, ah,",
+		"I, ah, ah,",
+		"So, um,",
+		"Yeah, ah,",
+		"Um, ah,"
 	],
 	"actions":
 	[
@@ -172,10 +172,7 @@
 		"Thanks",
 		"Thanks, I appreciate being here",
 		"Back to it",
-		"No problem",
-		"Thanks, (skates off quickly)",
-		"Thanks, (skates away)",
-		"Thanks, (hobbles off)"
+		"No problem"
 	],
 	"starts":
 	[

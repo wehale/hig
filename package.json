@@ -5,6 +5,7 @@
   "main": "hig.js",
   "scripts": {
     "test": "node hig.js",
+    "speak": "node hig.js speak",
     "start": "node hig.js server"
   },
   "repository": {
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/wehale/hig/issues"
   },
-  "homepage": "https://github.com/wehale/hig#readme"
+  "homepage": "https://github.com/wehale/hig#readme",
+  "dependencies": {
+    "say": "^0.16.0"
+  }
 }
