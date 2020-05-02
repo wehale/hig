@@ -99,7 +99,6 @@ function speak(phrases) {
 		v = 'David';
 	}
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
-	console.log("monkeys");
 	let p1 = new Promise(
         // The executor function is called with the ability to resolve or
         // reject the promise
@@ -107,8 +106,7 @@ function speak(phrases) {
 			setTimeout( function() {
 				resolve(say.speak(ph, v, 1, (err) => {
 					if (err) {
-						console.log("monkeys");
-						//setTimeout( function() {speak(phrases, os)}, 1000); //this is so windows works because their is an error with voice
+						return console.error(err);
 					}
 					setTimeout( function() {speak(phrases, os)}, 1000);
 				}
