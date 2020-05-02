@@ -107,15 +107,16 @@ function speak(phrases) {
 			setTimeout( function() {
 				resolve(say.speak(ph, v, 1, (err) => {
 					if (err) {
-						return console.error(err);
+						console.log("monkeys");
+						//p1.then(setTimeout( function() {speak(phrases, os)}), 10000); this is so windows works because their is an error with voice
 					}
+					p1.then(setTimeout( function() {speak(phrases, os)}), 100);
 				}
 			)
 		) // Yay! Everything went well!
-	 }, 1)}) 
+	 }, 1000)}) 
   		
 	
-	p1.then(setTimeout( function() {speak(phrases, os)}), 100000);
 }
 
 function genInterview(h) {
