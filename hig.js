@@ -81,18 +81,23 @@ function runSpeech() {
 	const running = true;
 	var out = [];
 	genInterview(out);
-	while (speak(out)) {}
+	while (speak(out, os)) {}
 }
 
-async function speak(phrases) {
+function speak(phrases) {
 	if (phrases.length == 0) {
 		return false;  	
 	}
 	var p = phrases.shift();
-	var v = 'Alex';
-	if (p.name == ANNOUNCER ) {
-		v = 'Samantha';
-	} 
+	if(os == 'mac'){
+		var v = 'Alex';
+			if (p.name == ANNOUNCER ) {
+				v = 'Samantha';
+		} 
+	}
+	else{
+		v = 'David';
+	}
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
 	console.log("monkeys");
 	let p1 = new Promise(
@@ -110,7 +115,7 @@ async function speak(phrases) {
 	 }, 1)}) 
   		
 	
-	p1.then(setTimeout( function() {speak(phrases)}), 100000);
+	p1.then(setTimeout( function() {speak(phrases, os)}), 100000);
 }
 
 function genInterview(h) {
