@@ -108,9 +108,9 @@ function speak(phrases) {
 				resolve(say.speak(ph, v, 1, (err) => {
 					if (err) {
 						console.log("monkeys");
-						//p1.then(setTimeout( function() {speak(phrases, os)}), 10000); this is so windows works because their is an error with voice
+						//setTimeout( function() {speak(phrases, os)}, 1000); //this is so windows works because their is an error with voice
 					}
-					p1.then(setTimeout( function() {speak(phrases, os)}), 100);
+					setTimeout( function() {speak(phrases, os)}, 1000);
 				}
 			)
 		) // Yay! Everything went well!
