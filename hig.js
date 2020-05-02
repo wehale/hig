@@ -2,7 +2,7 @@ var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs');
 const Say = require('say').Say;
-const say = new Say('darwin' || 'win32' || 'linux');
+const say = new Say('win32' || 'linux' || 'darwin');
 const ANNOUNCER = "Announcer";
 
 var myArgs = process.argv.slice(2);
@@ -82,7 +82,7 @@ function runSpeech() {
 	while (speak(out)) {}
 }
 
-function speak(phrases) {
+async function speak(phrases) {
 	if (phrases.length == 0) {
 		return false;  	
 	}
@@ -92,12 +92,23 @@ function speak(phrases) {
 		v = 'Samantha';
 	} 
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
-	say.speak(ph, v, 1, (err) => {
-  		if (err) {
-    		return console.error(err);
-  		}
-  		speak(phrases);
-	});		
+	console.log("monkeys");
+	let p1 = new Promise(
+        // The executor function is called with the ability to resolve or
+        // reject the promise
+       (resolve, reject) => {
+			setTimeout( function() {
+				resolve(say.speak(ph, v, 1, (err) => {
+					if (err) {
+						return console.error(err);
+					}
+				}
+			)
+		) // Yay! Everything went well!
+	 }, 1)}) 
+  		
+	
+	p1.then(setTimeout( function() {speak(phrases)}), 100000);
 }
 
 function genInterview(h) {
