@@ -90,7 +90,7 @@ async function speak(phrases) {
 	}
 	var p = phrases.shift();
 	var v = 'Alex';
-	if (p.name == ANNOUNCER) {
+	if (p.name == ANNOUNCER ) {
 		v = 'Samantha';
 	} 
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
