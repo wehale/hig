@@ -1,8 +1,10 @@
 var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs');
+var os = require('os');
+os = os.platform();
 const Say = require('say').Say;
-const say = new Say('win32' || 'linux' || 'darwin');
+const say = new Say(os);
 const ANNOUNCER = "Announcer";
 
 var myArgs = process.argv.slice(2);
