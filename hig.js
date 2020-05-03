@@ -1,8 +1,7 @@
 var port = process.env.PORT || 3000,
     http = require('http'),
     fs = require('fs');
-var os = require('os');
-os = os.platform();
+var os = require('os').platform();
 const Say = require('say').Say;
 const say = new Say(os);
 const ANNOUNCER = "Announcer";
@@ -84,7 +83,7 @@ function runSpeech() {
 	while (speak(out, os)) {}
 }
 
-function speak(phrases) {
+function speak(phrases, os) {
 	if (phrases.length == 0) {
 		return false;  	
 	}
