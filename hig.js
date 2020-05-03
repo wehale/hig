@@ -80,10 +80,10 @@ function runSpeech() {
 	const running = true;
 	var out = [];
 	genInterview(out);
-	while (speak(out, os)) {}
+	while (speak(out)) {}
 }
 
-function speak(phrases, os) {
+function speak(phrases) {
 	if (phrases.length == 0) {
 		return false;  	
 	}
