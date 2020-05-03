@@ -88,15 +88,24 @@ function speak(phrases, os) {
 		return false;  	
 	}
 	var p = phrases.shift();
-	if(os == 'mac'){
+	if(os == 'mac'){  //mac male voice to talk as hockey player
 		var v = 'Alex';
-			if (p.name == ANNOUNCER ) {
+			if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
 				v = 'Samantha';
 		} 
 	}
-	else{
-		v = 'David';
-	}
+	// else if (os=='win32'){ //windows male voice to talk as hockey player
+		// var v = 'David';
+			// if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer 
+				// v = 'Zira';
+		// }
+	// }
+	// else if (os == 'Darwin'){ // Linux Male voice to talk as hockey player
+		// var v = 'Linux_Male';
+			// if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer
+				// v = 'Linux_Female';
+		// }
+	// }
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
 	let p1 = new Promise(
         // The executor function is called with the ability to resolve or
