@@ -101,7 +101,6 @@ function speak(phrases) {
 		}
 	}
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
-	say.getInstalledVoices((err, voices) => console.log(voices))
 	let p1 = new Promise(
         // The executor function is called with the ability to resolve or
         // reject the promise
