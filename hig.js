@@ -95,12 +95,13 @@ function speak(phrases) {
 		} 
 	}
 	else if (os=='win32'){ //windows male voice to talk as hockey player
-		 var v = 'David';
+		 var v = 'Microsoft David Desktop';
 			 if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
-				 v = 'Zira';
+				 v ='Microsoft Zira Desktop';
 		}
 	}
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
+	say.getInstalledVoices((err, voices) => console.log(voices))
 	let p1 = new Promise(
         // The executor function is called with the ability to resolve or
         // reject the promise
@@ -109,7 +110,8 @@ function speak(phrases) {
 				resolve(say.speak(ph, v, 1, (err) => {
 					if (err) {
 						return console.error(err);
-
+						
+						
 					}
 					else if(p.name == ANNOUNCER){
 						setTimeout( function() {speak(phrases)}, 1500);
