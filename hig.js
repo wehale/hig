@@ -88,19 +88,19 @@ function speak(phrases) {
 		return false;  	
 	}
 	var p = phrases.shift();
-	if(os == 'mac'){  //mac male voice to talk as hockey player
+	if(os == 'darwin'){  //mac male voice to talk as hockey player
 		var v = 'Alex';
 			if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
 				v = 'Samantha';
 		} 
 	}
-	// else if (os=='win32'){ //windows male voice to talk as hockey player
-		// var v = 'David';
-			// if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer 
-				// v = 'Zira';
-		// }
-	// }
-	// else if (os == 'Darwin'){ // Linux Male voice to talk as hockey player
+	else if (os=='win32'){ //windows male voice to talk as hockey player
+		 var v = 'David';
+			 if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer 
+				 v = 'Zira';
+		}
+	}
+	// else if (os == 'linux'){ // Linux Male voice to talk as hockey player
 		// var v = 'Linux_Male';
 			// if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer
 				// v = 'Linux_Female';
@@ -116,7 +116,7 @@ function speak(phrases) {
 					if (err) {
 						return console.error(err);
 					}
-					setTimeout( function() {speak(phrases, os)}, 1000);
+					setTimeout( function() {speak(phrases)}, 1000);
 				}
 			)
 		) // Yay! Everything went well!
