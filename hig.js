@@ -90,13 +90,13 @@ function speak(phrases) {
 	var p = phrases.shift();
 	if(os == 'darwin'){  //mac male voice to talk as hockey player
 		var v = 'Alex';
-			if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
+			if (p.name == ANNOUNCER ) { //mac female voice to talk as announcer 
 				v = 'Samantha';
 		} 
 	}
 	else if (os=='win32'){ //windows male voice to talk as hockey player
 		 var v = 'David';
-			 if (p.name == ANNOUNCER ) { //linux female voice to talk as announcer 
+			 if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
 				 v = 'Zira';
 		}
 	}
