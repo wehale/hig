@@ -112,18 +112,7 @@ function speak(phrases) {
 						
 						
 					}
-					else if(p.name == ANNOUNCER){
-						setTimeout( function() {speak(phrases)}, 1500);
-					}
-					else if (p.phrase=='starts'){
-						setTimeout( function() {speak(phrases)}, 3500);
-					}
-					else if (p.phrase=='filler' || p.phrase == 'closing'){
-						setTimeout( function() {speak(phrases)}, 600);
-					}
-					else{
-						speak(phrases);
-					}
+					speak(phrases);
 				}
 			)
 		) // Yay! Everything went well!
