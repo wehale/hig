@@ -109,12 +109,24 @@ function speak(phrases) {
 				resolve(say.speak(ph, v, 1, (err) => {
 					if (err) {
 						return console.error(err);
+
 					}
-					setTimeout( function() {speak(phrases)}, 1000);
+					else if(p.name == ANNOUNCER){
+						setTimeout( function() {speak(phrases)}, 1500);
+					}
+					else if (p.phrase=='starts'){
+						setTimeout( function() {speak(phrases)}, 3500);
+					}
+					else if (p.phrase=='filler' || p.phrase == 'closing'){
+						setTimeout( function() {speak(phrases)}, 600);
+					}
+					else{
+						speak(phrases);
+					}
 				}
 			)
 		) // Yay! Everything went well!
-	 }, 1000)}) 
+	 }, 0)}) 
   		
 	
 }
