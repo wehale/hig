@@ -5,6 +5,8 @@ var os = require('os').platform();
 const Say = require('say').Say;
 const say = new Say(os);
 const ANNOUNCER = "Announcer";
+const util = require('util');
+
 
 var myArgs = process.argv.slice(2);
 
@@ -90,37 +92,30 @@ function speak(phrases) {
 	var p = phrases.shift();
 	if(os == 'darwin'){  //mac male voice to talk as hockey player
 		var v = 'Alex';
-			if (p.name == ANNOUNCER ) { //mac female voice to talk as announcer 
+			if (phrases.name == ANNOUNCER ) { //mac female voice to talk as announcer 
 				v = 'Samantha';
 		} 
 	}
 	else if (os=='win32'){ //windows male voice to talk as hockey player
 		 var v = 'Microsoft David Desktop';
-			 if (p.name == ANNOUNCER ) { //windows female voice to talk as announcer 
+			 if (phrases.name == ANNOUNCER ) { //windows female voice to talk as announcer 
 				 v ='Microsoft Zira Desktop';
 		}
 	}
+	
 	var ph = p.phrase.toString().startsWith('(') ? "..." : p.phrase;
-	say.getInstalledVoices((err, voices) => console.log(voices))
-	let p1 = new Promise(
-        // The executor function is called with the ability to resolve or
-        // reject the promise
-       (resolve, reject) => {
-			setTimeout( function() {
-				resolve(say.speak(ph, v, 1, (err) => {
-					if (err) {
-						return console.error(err);
-						
-						
-					}
-					speak(phrases);
-				}
-			)
-		) // Yay! Everything went well!
-	 }, 0)}) 
-  		
+	// Here we use util.promisify to convert the function to a promise
+	const speakAsync = util.promisify(say.speak.bind(say));
+	
+
+	speakAsync(ph,v,1)
+		.then(() => speak(phrases))
+		.catch(err => console.error(`[Error]: ${err}`));
+	
 	
 }
+	
+
 
 function genInterview(h) {
 	let rawJson = fs.readFileSync('hig.json');
