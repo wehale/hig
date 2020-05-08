@@ -10,5 +10,5 @@ This is a simple node app that will generate a random hockey interview. Now upda
 // output to the command line  
 > npm test  
 
-//speak through the speakers (only tested on Mac)  
+//speak through the speakers (Mac and now Windows also supported - Thanks @paulr34 !)  
 > npm run speak  

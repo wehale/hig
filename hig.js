@@ -107,12 +107,9 @@ function speak(phrases) {
 	// Here we use util.promisify to convert the function to a promise
 	const speakAsync = util.promisify(say.speak.bind(say));
 	
-
 	speakAsync(ph,v,1)
 		.then(() => speak(phrases))
 		.catch(err => console.error(`[Error]: ${err}`));
-	
-	
 }
 	
 
